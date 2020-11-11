@@ -14,12 +14,16 @@ app.use(cors());
 
 app.set('view engine', 'ejs');
 
+// static files
+app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // routes
-app.get('/', (req, res) => {
-    res.render('book');
+// getting books
+app.get('/books', (req, res) => {
+    res.json(books);
 });
 
 // creating a new book
